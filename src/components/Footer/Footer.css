@@ -1,0 +1,10 @@
+.footer {
+  width: 90vw;
+  height: 7vh;
+  border-top: springgreen 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5vh;
+  font-weight: bolder;
+}

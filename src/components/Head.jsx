@@ -1,5 +1,4 @@
 import logo from "../assets/logo.png";
-import Button from "./Button";
 
 const Head = () => {
   const gotoHome = () => {

@@ -1,38 +1,31 @@
+@font-face {
+  font-family: 'MyFont';
+  src: url(./assets/font/9335dc860e2d6865b7ea5b9216c2dd83.ttf); /* PingFang SC 挺好看的字体:p*/
+}
+body {
+  margin: 0;
+}
 .App {
-  text-align: center;
+  width: 98vw;
+  background-image: linear-gradient(#5cdbd3, #d9f7be);
+  font-family: 'Myfont';
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* 设置滚动条的样式 */
+::-webkit-scrollbar {
+  width: 2vw;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* 滚动槽 */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset006pxrgba(0, 0, 0, 0.3);
+  border-radius: 10px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #69c0ff77;
+  -webkit-box-shadow: inset006pxrgba(0, 0, 0, 0.5);
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+::-webkit-scrollbar-thumb:window-inactive {
+  background: #69c0ff77;
 }
