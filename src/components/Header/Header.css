@@ -1,0 +1,32 @@
+.header {
+  width: 100%;
+  height: 7vh;
+  border: red solid 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login {
+  padding: 0.5vh;
+  margin-right: 1vw;
+  border-radius: 0.9vh;
+  background-color: #13c2c2aa;
+  font-weight: bolder;
+}
+
+.login:hover {
+  cursor: pointer;
+}
+
+.faq {
+  padding: 0.5vh;
+  margin-right: 1vw;
+  border-radius: 0.9vh;
+  background-color: #13c2c2aa;
+  font-weight: bolder;
+}
+
+.faq:hover {
+  cursor: pointer;
+}
