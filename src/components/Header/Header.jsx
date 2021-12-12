@@ -11,7 +11,7 @@ const Header = () => {
   }
   return (
     <div className="header">
-      <div>知书</div>
+      <div>知书·达理</div>
       <div style={{ display: 'flex' }}>
         <div className="login" onClick={handleClickLogin}>
           Sign In
