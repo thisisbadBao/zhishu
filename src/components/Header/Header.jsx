@@ -30,6 +30,7 @@ const Header = () => {
           height: '5vh',
           alignItems: 'center',
           fontWeight: '900',
+          marginRight: '2vw',
         }}
       >
         <div className="cart" onClick={handleClickCart}>

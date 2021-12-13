@@ -1,7 +1,41 @@
 .welcome {
-  height: 34vh;
+  height: 45vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.searchLogo {
+  position: absolute;
+  top: 0;
+  display: flex;
+  color: #ffffff99;
+  font-size: 3vh;
+  letter-spacing: 0.8vw;
+  text-shadow: 0.3vw 0 0.9vw #fff;
+}
+
+.searchBar {
+  display: flex;
+  position: absolute;
+  top: 22vh;
+  width: 30vw;
+  height: 5vh;
+  padding-left: 1vw;
+}
+
+.searchInput {
+  width: 100%;
+  margin-left: -2.9vw;
+  padding-left: 10.9vw;
+  outline: none;
+  border: none;
+  font-size: 2.2vh;
+  background-color: #ffffff19;
+}
+
+.searchInput:focus {
+  background-color: #ffffff44;
+  padding-left: 2.9vw;
 }

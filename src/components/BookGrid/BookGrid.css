@@ -1,3 +1,6 @@
 .bookGrid {
-  height: 52vh;
+  min-height: 52vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
