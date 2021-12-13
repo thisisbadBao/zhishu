@@ -1,0 +1,19 @@
+.About {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+}
+
+.clickText {
+  cursor: pointer;
+}
+
+.aboutItems {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1em;
+  border: red solid 3px;
+}

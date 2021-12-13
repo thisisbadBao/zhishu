@@ -1,0 +1,24 @@
+.aboutItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: red solid 2px;
+  margin: 2vw ;
+  border-radius: 1vw;
+}
+
+.clickText {
+  display: flex;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  background-color:black;
+  padding: 1vm;
+  margin: 20%;
+  border-radius: 4px;
+}
+
+.clickText:hover {
+  color: antiquewhite;
+  background-color:#2c3e50;
+}
