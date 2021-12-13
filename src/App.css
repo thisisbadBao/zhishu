@@ -5,34 +5,17 @@
 body {
   margin: 0;
   background-color: #eeeeee;
+  overflow-x: hidden;
+  overflow-y: overlay;
 }
 .App {
-  width: 99vw;
+  width: 100vw;
   font-family: 'Myfont';
 }
 
 .content {
   width: 90vw;
-  margin-left: 4.5vw;
+  margin-left: 5vw;
   background-color: #fff;
   box-shadow: 0 -4vh 3vh 3vh #22222233;
-}
-
-/* 设置滚动条的样式 */
-::-webkit-scrollbar {
-  width: 1vw;
-}
-/* 滚动槽 */
-::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset006pxrgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-}
-/* 滚动条滑块 */
-::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background: #69c0ff77;
-  -webkit-box-shadow: inset006pxrgba(0, 0, 0, 0.5);
-}
-::-webkit-scrollbar-thumb:window-inactive {
-  background: #69c0ff77;
 }
