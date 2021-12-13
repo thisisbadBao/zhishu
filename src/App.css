@@ -6,14 +6,14 @@ body {
   margin: 0;
 }
 .App {
-  width: 98vw;
+  width: 99vw;
   background-image: linear-gradient(#5cdbd3, #d9f7be);
   font-family: 'Myfont';
 }
 
 /* 设置滚动条的样式 */
 ::-webkit-scrollbar {
-  width: 2vw;
+  width: 1vw;
 }
 /* 滚动槽 */
 ::-webkit-scrollbar-track {

@@ -1,4 +1,8 @@
 .welcome {
   border: red solid 2px;
   height: 34vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

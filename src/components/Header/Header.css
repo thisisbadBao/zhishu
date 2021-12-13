@@ -8,25 +8,54 @@
 }
 
 .login {
-  padding: 0.5vh;
+  font-size: 1.5vh;
+  text-align: center;
+  padding: 0.9vh;
   margin-right: 1vw;
   border-radius: 0.9vh;
-  background-color: #13c2c2aa;
+  background-color: #13c2c277;
   font-weight: bolder;
 }
 
 .login:hover {
   cursor: pointer;
+  box-shadow: 0 0 2vh 2vh #13c2c233;
 }
 
 .faq {
-  padding: 0.5vh;
+  font-size: 1.5vh;
+  text-align: center;
+  height: 2vh;
+  padding: 0.9vh;
   margin-right: 1vw;
   border-radius: 0.9vh;
-  background-color: #13c2c2aa;
+  background-color: #13c2c277;
   font-weight: bolder;
 }
 
 .faq:hover {
   cursor: pointer;
+  box-shadow: 0 0 2vh 2vh #13c2c233;
+}
+
+.cart {
+  font-size: 1.5vh;
+  text-align: center;
+  padding: 0.9vh;
+  margin-right: 1vw;
+  border-radius: 0.9vh;
+  background-color: #13c2c277;
+  font-weight: bolder;
+}
+
+.cart:hover {
+  cursor: pointer;
+  box-shadow: 0 0 2vh 2vh #13c2c233;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 900;
 }
