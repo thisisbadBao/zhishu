@@ -1,10 +1,8 @@
 .container {
   position: relative;
   top: 0;
-  left: 5%;
-  width: 90%;
-  background-image: linear-gradient(#d9f7be, #5cdbd3);
-  box-shadow: 0 0 2vw 1vw #00000055;
+  left: 0;
+  width: 100%;
 }
 
 .main {

@@ -1,5 +1,5 @@
 .footer {
-  width: 90vw;
+  width: 99vw;
   height: 7vh;
   border-top: springgreen 2px;
   display: flex;
@@ -7,4 +7,5 @@
   align-items: center;
   font-size: 1.5vh;
   font-weight: bolder;
+  border-top: #22222233 dotted 0.3vh;
 }

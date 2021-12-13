@@ -9,13 +9,19 @@ const Header = () => {
     navigate('/login')
   }
   function handleClickFAQ() {
-    navigate('/FAQ')
+    navigate('/About')
+  }
+  function handleClickOnLogo() {
+    navigate('/')
+  }
+  function handleClickCart() {
+    navigate('/shoppingCart')
   }
   return (
     <div className="header">
-      <div className="logo">
+      <div className="logo" onClick={handleClickOnLogo}>
         <img src={logoUrl} alt="" style={{ width: '3vw', height: '5vh' }} />
-        <div>知书</div>
+        <div style={{ color: '#fff' }}>知书</div>
       </div>
       <div
         style={{
@@ -26,7 +32,9 @@ const Header = () => {
           fontWeight: '900',
         }}
       >
-        <div className="cart">购物车</div>
+        <div className="cart" onClick={handleClickCart}>
+          购物车
+        </div>
         <div className="login" onClick={handleClickLogin}>
           登录
         </div>
