@@ -1,0 +1,38 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: aqua; */
+}
+
+.loginForm {
+  color: black;
+  margin: 2em;
+  display: flex;
+  flex-direction: column;
+}
+
+.usernameInput {
+  display: inline-flex;
+  margin-inline: 2em;
+}
+
+.passwordInput {
+  display: inline-flex;
+  margin-inline: 2em;
+}
+
+.inputBox {
+  margin-inline: 2em;
+}
+
+.switchMod {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: black
+}
+
+.registerTable {
+  color: black;
+}

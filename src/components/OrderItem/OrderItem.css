@@ -1,0 +1,6 @@
+.orderItem {
+    display: inline-flex;
+    border: red solid 2px;
+    margin: 1em
+
+}

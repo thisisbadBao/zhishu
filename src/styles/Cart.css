@@ -1,0 +1,6 @@
+.orderList {
+  display: flex;
+  flex-direction: column;
+  border: red solid 2px;
+  margin: 1em;
+}
