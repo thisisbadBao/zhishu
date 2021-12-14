@@ -9,7 +9,7 @@
   z-index: 20;
 }
 
-.login {
+.loginButton {
   font-size: 1.5vh;
   text-align: center;
   padding: 0.9vh;
@@ -19,7 +19,7 @@
   color: #fff;
 }
 
-.login:hover {
+.loginButton:hover {
   cursor: pointer;
   box-shadow: 0 0 1vh 1vh #ffffff66;
   background-color: #ffffff66;
@@ -28,7 +28,6 @@
 .faq {
   font-size: 1.5vh;
   text-align: center;
-  height: 2vh;
   padding: 0.9vh;
   margin-right: 1vw;
   border-radius: 0.9vh;
