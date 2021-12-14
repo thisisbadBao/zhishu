@@ -47,7 +47,7 @@ const Header = ({ user, logout }) => {
         </div>
         {user.userAuth ? (
           <div className="loginButton" onClick={handleClickLogout}>
-            退出登录
+            退出登录({user.userName})
           </div>
         ) : (
           <div className="loginButton" onClick={handleClickLogin}>
