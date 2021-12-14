@@ -3,3 +3,4 @@ export const NO_PERMISSION = { errMsg: '无权限', errCode: 403 }
 export const NOT_FOUND = { errMsg: '未找到资源', errCode: 404 }
 export const TIME_OUT = { errMsg: '请求超时', errCode: 408 }
 export const UNKNOWN_FAIL = { errMsg: '未捕获的异常错误', errCode: -1 }
+export const UNKNOWN_BOOK = { errMsg: '未找到书本', errCode: 5 }

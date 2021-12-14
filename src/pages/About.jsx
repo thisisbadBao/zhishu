@@ -22,7 +22,7 @@ const About = () => {
 
   return (
     <div className="About">
-      <h1>About</h1>
+      <h1 className="title">Help</h1>
       <div className="aboutItems">
         <AboutItem imgUrl={FaqImg} text="F.A.Q" onClick={handleClickFaq} />
         <AboutItem

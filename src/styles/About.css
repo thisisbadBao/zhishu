@@ -3,6 +3,13 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+.title {
+  margin: 2em;
+  border: solid 0.1em;
+  padding-inline: 10%;
+  border-color: black;
 
 }
 
@@ -15,5 +22,5 @@
   align-items: center;
   justify-content: center;
   margin: 1em;
-  border: red solid 3px;
+  width: 100%;
 }

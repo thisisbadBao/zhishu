@@ -1,0 +1,13 @@
+.orderList {
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 3em;
+}
+
+.submitCart {
+  font-size: medium;
+  padding: 2em;
+}

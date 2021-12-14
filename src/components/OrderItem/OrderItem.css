@@ -1,0 +1,46 @@
+.orderItem {
+  display: flex;
+  /* border: red solid 2px; */
+  margin: 1em;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0.2vh 0.2vh 0.5vh 0.3vh #22222233;
+  border-radius: 0.5em;
+}
+
+.bookOrderImg {
+  border-top-left-radius: 0.5em;
+  border-bottom-left-radius: 0.5em;
+}
+
+.bookDetail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-inline: 7em;
+  box-shadow: 0 0 0 0;
+  color: #177d8f
+}
+
+.bookNumWiget {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 1em;
+}
+
+.bookNum {
+  color: black;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+}
+
+.totalCost {
+  display: inline-flex;
+  font-weight: bold;
+  justify-content: center;
+  justify-content: center;
+  align-items: center;
+}

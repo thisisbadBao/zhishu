@@ -2,8 +2,8 @@ import React from 'react'
 import './Header.css'
 import { useNavigate } from 'react-router-dom'
 import logoUrl from '../../assets/image/logo.svg'
-import cartUrl from '../../assets/image/cart.svg'
-const Header = () => {
+import { message } from 'antd'
+const Header = ({ user, logout }) => {
   let navigate = useNavigate()
   function handleClickLogin() {
     navigate('/login')
@@ -16,6 +16,15 @@ const Header = () => {
   }
   function handleClickCart() {
     navigate('/shoppingCart')
+  }
+  function handleClickAdmin() {
+    navigate('/admin')
+  }
+  function handleClickLogout() {
+    logout({ userName: '', userAuth: '' })
+    localStorage.removeItem('userName')
+    localStorage.removeItem('userAuth')
+    message.info('已登出')
   }
   return (
     <div className="header">
@@ -36,12 +45,24 @@ const Header = () => {
         <div className="cart" onClick={handleClickCart}>
           购物车
         </div>
-        <div className="login" onClick={handleClickLogin}>
-          登录
-        </div>
+        {user.userAuth ? (
+          <div className="loginButton" onClick={handleClickLogout}>
+            退出登录
+          </div>
+        ) : (
+          <div className="loginButton" onClick={handleClickLogin}>
+            登录
+          </div>
+        )}
+
         <div className="faq" onClick={handleClickFAQ}>
-          帮助
+          关于
         </div>
+        {user.userAuth && (
+          <div className="admin" onClick={handleClickAdmin}>
+            后台管理
+          </div>
+        )}
       </div>
     </div>
   )

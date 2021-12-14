@@ -1,0 +1,11 @@
+.title {
+  margin: 2em;
+  display: inline-flex;
+  color: black;
+  border: solid 0.1em;
+  padding: 10%;
+  border-color: black 1em;
+  justify-content: center;
+  align-items: center;
+
+}

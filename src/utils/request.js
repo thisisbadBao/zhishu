@@ -4,7 +4,7 @@ const regHttp = /^(http[s]{0,1}:\/\/)/
 
 async function request(url, options = {}, others = {}) {
   try {
-    const { header = {}, ...other } = options
+    // const { header = {}, ...other } = options
 
     const _url = `${regHttp.test(url) ? '' : server.host}${url}`
 
@@ -26,6 +26,8 @@ async function request(url, options = {}, others = {}) {
           return Error.TIME_OUT
         case Error.UNKNOWN_FAIL.errCode:
           return Error.UNKNOWN_FAIL
+        case Error.UNKNOWN_BOOK.errCode:
+          return Error.UNKNOWN_BOOK
         default:
           return res
       }
@@ -61,7 +63,7 @@ async function handleResponse(response) {
 
 async function get(url, options) {
   if (options) {
-    const { query, ...other } = options
+    const { query } = options
     if (Object.keys(query !== 0)) {
       url += '?'
       for (let key in query) {
