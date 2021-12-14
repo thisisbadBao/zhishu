@@ -107,7 +107,7 @@ const Cart = () => {
         >
           提交订单
         </Button>
-<Popover
+        <Popover
           id={id}
           open={open}
           anchorEl={anchorEl}
@@ -121,7 +121,11 @@ const Cart = () => {
         </Popover>
       </div>
 
-      
+      <div>
+        <Button aria-describedby={id} variant="contained" onClick={handleClick}>
+          Open Popover
+        </Button>
+      </div>
     </div>
   );
 };
