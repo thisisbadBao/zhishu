@@ -11,3 +11,17 @@
   font-size: medium;
   padding: 2em;
 }
+
+.btnGroup {
+  display: flex;
+}
+
+.btn {
+  margin-inline: 2em;
+}
+
+.sumTitle {
+  display: inline-flexbox;
+  text-align: center;
+  place-items: center;
+}

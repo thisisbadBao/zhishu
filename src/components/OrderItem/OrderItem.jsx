@@ -9,7 +9,6 @@ const OrderItem = ({ bookImg, bookName, bookPrice, bookNum }) => {
   return (
     <div className="orderItem">
       <img className="bookOrderImg" src={bookImg} alt="" />
-      {/* <div style={{backgroundImage:`url( ${ bookImg } )`, backgroundSize: '100% 100%'}}></div> */}
       <div className="bookDetail">
         <h2 className="bookName">《{bookName}》</h2>
         <h4>单价: ￥{bookPrice}</h4>
