@@ -8,15 +8,16 @@ import Typography from "@mui/material/Typography";
 
 const Cart = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const handleClick = (event) => {
+  let [sum, setSum] = React.useState(0);
+  const submitCart = (event) => {
     setAnchorEl(event.currentTarget);
+    orders.map((item) => (sum += item.bookPrice * item.bookNum));
+    setSum(sum);
+    console.log(sum);
   };
-
   const handleClose = () => {
     setAnchorEl(null);
   };
-
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
   const orders = [
@@ -72,13 +73,6 @@ const Cart = () => {
     },
   ];
 
-  const submitCart = () => {
-    let sum = 0;
-    orders.map((item) => (sum += item.bookPrice * item.bookNum));
-
-    console.log(sum);
-  };
-
   return (
     <div className="orderList">
       <Title text="Cart" />
@@ -91,22 +85,7 @@ const Cart = () => {
         />
       ))}
 
-      {/* <IconButton
-        className="submitCart"
-        color="primary"
-        aria-label="add to shopping cart"
-        onClick={submitCart}
-      >
-        <AddShoppingCartIcon /> 提交订单
-      </IconButton> */}
       <div className="submitCart">
-        <Button
-          variant="contained"
-          style={{ background: `#002329` }}
-          onClick={submitCart}
-        >
-          提交订单
-        </Button>
         <Popover
           id={id}
           open={open}
@@ -117,13 +96,45 @@ const Cart = () => {
             horizontal: "left",
           }}
         >
-          <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+          <Typography sx={{ p: 2 }}>
+            <h3 className="sumTitle">总价为{sum}元</h3>
+            <div className="btnGroup">
+              <div className="btn">
+                <Button
+                  className="btn"
+                  variant="contained"
+                  color="error"
+                  onClick={() => {
+                    handleClose();
+                    alert("支付失败!");
+                  }}
+                >
+                  取消
+                </Button>
+              </div>
+              <div className="btn">
+                <Button
+                  variant="contained"
+                  color="success"
+                  onClick={() => {
+                    handleClose();
+                    alert("支付成功" + sum + "元！");
+                    setSum(0);
+                  }}
+                >
+                  确认
+                </Button>
+              </div>
+            </div>
+          </Typography>
         </Popover>
-      </div>
-
-      <div>
-        <Button aria-describedby={id} variant="contained" onClick={handleClick}>
-          Open Popover
+        <Button
+          variant="contained"
+          aria-describedby={id}
+          style={{ background: `#002329` }}
+          onClick={submitCart}
+        >
+          提交订单
         </Button>
       </div>
     </div>

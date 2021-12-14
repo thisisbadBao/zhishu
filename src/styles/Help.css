@@ -1,0 +1,13 @@
+.help {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.helpDom {
+  display: flex;
+  flex-direction: column;
+  padding-inline: 5em;
+  padding-bottom: 5em;
+}
