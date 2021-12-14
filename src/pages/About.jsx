@@ -27,7 +27,7 @@ const About = () => {
         <AboutItem imgUrl={FaqImg} text="F.A.Q" onClick={handleClickFaq} />
         <AboutItem
           imgUrl={HelpImg}
-          text="Help Document"
+          text="Help"
           onClick={handleClickHelp}
         />
         <AboutItem

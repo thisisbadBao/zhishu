@@ -1,0 +1,14 @@
+.FAQ {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 3em;
+
+}
+
+.myTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

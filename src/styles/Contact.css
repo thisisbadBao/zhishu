@@ -1,0 +1,13 @@
+.contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.perCards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
