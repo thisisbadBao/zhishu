@@ -2,7 +2,6 @@ import React from 'react'
 import './Header.css'
 import { useNavigate } from 'react-router-dom'
 import logoUrl from '../../assets/image/logo.svg'
-import cartUrl from '../../assets/image/cart.svg'
 const Header = () => {
   let navigate = useNavigate()
   function handleClickLogin() {

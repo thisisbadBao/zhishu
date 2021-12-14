@@ -29,6 +29,15 @@
   background-color: #00232911;
 }
 
-.bookItem:hover {
+.bookImg:hover {
   cursor: pointer;
+}
+
+.bookDetailImg {
+  height: 270px;
+  width: 100%;
+  overflow-y: hidden;
+  display: flex;
+  justify-content: center;
+  padding: 2%;
 }
