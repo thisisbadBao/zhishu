@@ -54,7 +54,7 @@ const Login = ({ getLogin }) => {
     })
     console.log(res)
     if (res.code === 200) {
-      message.success('登录成功')
+      message.success('登录成功，欢迎 ' + res.data.userName)
       getLogin({
         userName: res.data.userName,
         userAuth: res.data.userAuth ? 'admin' : 'user',

@@ -22,9 +22,9 @@ const Header = ({ user, logout }) => {
   }
   function handleClickLogout() {
     logout({ userName: '', userAuth: '' })
+    message.info(user.userName + '已登出')
     localStorage.removeItem('userName')
     localStorage.removeItem('userAuth')
-    message.info('已登出')
   }
   return (
     <div className="header">
@@ -47,7 +47,7 @@ const Header = ({ user, logout }) => {
         </div>
         {user.userAuth ? (
           <div className="loginButton" onClick={handleClickLogout}>
-            退出登录
+            退出登录({user.userName})
           </div>
         ) : (
           <div className="loginButton" onClick={handleClickLogin}>
