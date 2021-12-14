@@ -98,7 +98,7 @@ const BookItem = ({ bookImg, bookName, bookAuthor, bookNote, bookPrice }) => {
               backgroundSize: '100%,100%',
             }}
           >
-            <img src={bookImg} alt="" style={{ width: '15%' }} />
+            <img src={bookImg} alt="" style={{ width: '180px' }} />
           </div>
         </div>
       </Dialog>

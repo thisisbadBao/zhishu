@@ -34,7 +34,7 @@
   background-color: #00232911;
   font-weight: 900;
   color: #002329aa;
-  text-shadow: 1vw 0 0.7vw #00232999;
+  text-shadow: 0.7vw 0 0.7vw #00232999;
 }
 
 .bookImg:hover {
@@ -42,10 +42,10 @@
 }
 
 .bookDetailImg {
-  height: 270px;
+  height: 100%;
   width: 100%;
   overflow-y: hidden;
   display: flex;
   justify-content: center;
-  padding: 2%;
+  padding: 3%;
 }
