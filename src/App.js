@@ -14,18 +14,25 @@ import {
   Routes,
   Navigate,
 } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Footer from './components/Footer/Footer'
 function App() {
-  const [user, setUser] = useState({ userName: 'badbao', userAuth: 'admin' })
+  var name = localStorage.getItem('userName')
+  var auth = localStorage.getItem('userAuth')
+  console.log(auth)
+  const [user, setUser] = useState({
+    userName: name ? name : '',
+    userAuth: name ? auth : '',
+  })
+
   return (
     <Router>
       <div className="App">
-        <Header user={user} />
+        <Header user={user} logout={setUser} />
         <div className="content">
           <Routes>
             <Route element={<Home />} path="/home"></Route>
-            <Route element={<Login />} path="/login"></Route>
+            <Route element={<Login getLogin={setUser} />} path="/login"></Route>
             <Route element={<About />} path="/about"></Route>
             <Route element={<Help />} path="/about/help"></Route>
             <Route element={<Faq />} path="/about/faq"></Route>
