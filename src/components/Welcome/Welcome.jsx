@@ -17,6 +17,7 @@ const Welcome = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
+            cursor: 'default',
           }}
         >
           知书
@@ -26,6 +27,7 @@ const Welcome = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
+            cursor: 'default',
           }}
         >
           达理

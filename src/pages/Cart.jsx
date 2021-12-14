@@ -60,12 +60,10 @@ const Cart = () => {
   ];
 
   const submitCart = () => {
-    let sum = 0
-    orders.map((item) => (
-      sum += item.bookPrice * item.bookNum
-    ) ) 
-    
-    console.log (sum)
+    let sum = 0;
+    orders.map((item) => (sum += item.bookPrice * item.bookNum));
+
+    console.log(sum);
   };
 
   return (
@@ -80,7 +78,12 @@ const Cart = () => {
         />
       ))}
 
-      <IconButton className="submitCart" color="primary" aria-label="add to shopping cart" onClick={submitCart}>
+      <IconButton
+        className="submitCart"
+        color="primary"
+        aria-label="add to shopping cart"
+        onClick={submitCart}
+      >
         <AddShoppingCartIcon /> 提交订单
       </IconButton>
     </div>

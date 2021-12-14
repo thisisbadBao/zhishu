@@ -91,11 +91,13 @@ const BookGrid = () => {
   ]
   return (
     <div className="bookGrid">
-      {bookArr.map(item => (
+      {bookArr.map((item, index) => (
         <BookItem
           bookImg={item.bookImg}
           bookName={item.bookName}
-          author={item.author}
+          bookAuthor={item.author}
+          bookPrice={77}
+          key={index}
         />
       ))}
     </div>
