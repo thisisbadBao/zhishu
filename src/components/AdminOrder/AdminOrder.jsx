@@ -3,34 +3,32 @@ import { DataGrid } from '@mui/x-data-grid'
 import Box from '@mui/material/Box'
 const columns = [
   { field: 'id', headerName: 'id', align: 'center', width: 20 },
-  { field: 'bookName', headerName: '书名', align: 'left', width: 150 },
-  { field: 'bookAuthor', headerName: '作者', align: 'left', width: 120 },
+  { field: 'orderUser', headerName: '下单用户', align: 'left', width: 150 },
+  { field: 'orderTime', headerName: '下单时间', align: 'left', width: 150 },
   {
-    field: 'bookPrice',
-    headerName: '价格',
+    field: 'orderPrice',
+    headerName: '总价',
     type: 'number',
     align: 'right',
     width: 100,
   },
   {
-    field: 'bookRemain',
-    headerName: '剩余数量',
-    type: 'number',
-    align: 'right',
+    field: 'bookList',
+    headerName: '书单',
     width: 150,
   },
-  { field: 'bookState', headerName: '状态', align: 'left', width: 90 },
+  { field: 'orderState', headerName: '状态', align: 'left', width: 90 },
 ]
 let idCounter = 0
 const createRandomRow = () => {
   idCounter += 1
   return {
     id: idCounter,
-    bookName: '局外人',
-    bookAuthor: '加缪',
-    bookPrice: 77,
-    bookRemain: 16,
-    bookState: '正在销售',
+    orderUser: 'badbao',
+    orderTime: '2021 12.14 16:33',
+    orderPrice: 77,
+    bookList: '《局外人》',
+    orderState: '未处理',
   }
 }
 const AdminOrder = () => {
