@@ -2,7 +2,7 @@ import React from 'react'
 import './Header.css'
 import { useNavigate } from 'react-router-dom'
 import logoUrl from '../../assets/image/logo.svg'
-const Header = () => {
+const Header = ({ user }) => {
   let navigate = useNavigate()
   function handleClickLogin() {
     navigate('/login')
@@ -15,6 +15,9 @@ const Header = () => {
   }
   function handleClickCart() {
     navigate('/shoppingCart')
+  }
+  function handleClickAdmin() {
+    navigate('/admin')
   }
   return (
     <div className="header">
@@ -35,12 +38,24 @@ const Header = () => {
         <div className="cart" onClick={handleClickCart}>
           购物车
         </div>
-        <div className="login" onClick={handleClickLogin}>
-          登录
-        </div>
+        {user.userAuth ? (
+          <div className="login" onClick={handleClickLogin}>
+            退出登录
+          </div>
+        ) : (
+          <div className="login" onClick={handleClickLogin}>
+            登录
+          </div>
+        )}
+
         <div className="faq" onClick={handleClickFAQ}>
-          帮助
+          关于
         </div>
+        {user.userAuth === 'admin' && (
+          <div className="admin" onClick={handleClickAdmin}>
+            后台管理
+          </div>
+        )}
       </div>
     </div>
   )
