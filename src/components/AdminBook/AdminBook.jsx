@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { DataGrid } from '@mui/x-data-grid'
 import Box from '@mui/material/Box'
+import * as Api from '../../utils/api'
 const columns = [
   { field: 'id', headerName: 'id', align: 'center', width: 20 },
   { field: 'bookName', headerName: '书名', align: 'left', width: 150 },
@@ -22,24 +23,27 @@ const columns = [
   { field: 'bookState', headerName: '状态', align: 'left', width: 90 },
 ]
 let idCounter = 0
-const createRandomRow = () => {
-  idCounter += 1
-  return {
-    id: idCounter,
-    bookName: '局外人',
-    bookAuthor: '加缪',
-    bookPrice: 77,
-    bookRemain: 16,
-    bookState: '正在销售',
-  }
-}
 const AdminBook = () => {
-  const [rows, setRows] = React.useState(() => [
-    createRandomRow(),
-    createRandomRow(),
-    createRandomRow(),
-    createRandomRow(),
-  ])
+  const [rows, setRows] = React.useState([])
+  React.useEffect(() => {
+    const fetchallbook = async () => {
+      let res = await Api.getAllBook()
+      let books = res.data
+      let _rows = []
+      for (let i = 0; i < books.length; i++) {
+        _rows.push({
+          id: idCounter++,
+          bookName: books[i].bookname,
+          bookAuthor: books[i].bookauthor,
+          bookPrice: books[i].bookprice,
+          bookRemain: books[i].bookremain,
+          bookState: books[i].bookstate ? '已下架' : '正在销售',
+        })
+      }
+      setRows(_rows)
+    }
+    fetchallbook()
+  }, [])
   return (
     <div style={{ height: 400, width: '100%' }}>
       <div style={{ display: 'flex', height: '100%' }}>

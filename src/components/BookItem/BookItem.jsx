@@ -21,7 +21,16 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />
 })
 
-const BookItem = ({ bookImg, bookName, bookAuthor, bookNote, bookPrice }) => {
+const BookItem = ({
+  bookImg,
+  bookName,
+  bookAuthor,
+  bookNote,
+  bookPrice,
+  bookRelease,
+  bookRemain,
+  addToCart,
+}) => {
   const [open, setOpen] = useState(false)
   const [addCartOpen, setAddCartOpen] = useState(false)
   const handleClickOpen = () => {
@@ -33,6 +42,13 @@ const BookItem = ({ bookImg, bookName, bookAuthor, bookNote, bookPrice }) => {
   const handleAddCartClose = () => {
     setOpen(false)
     setAddCartOpen(true)
+    addToCart({
+      bookName: bookName,
+      bookImg: bookImg,
+      bookPrice: bookPrice,
+      bookNum: 1,
+      bookAuthor: bookAuthor,
+    })
   }
 
   return (
@@ -80,12 +96,13 @@ const BookItem = ({ bookImg, bookName, bookAuthor, bookNote, bookPrice }) => {
               <ListItemText primary="作者" secondary={bookAuthor} />
             </ListItem>
             <ListItem button>
-              <ListItemText
-                primary="简介"
-                secondary={
-                  '《局外人》是法国作家加缪的成名作，同时也是存在主义文学的杰出作品之一，该书以一种客观记录式的“零度风格”，粗线条地描述了主人公默尔索在荒谬的世界中经历的种种荒谬的事，以及自身的荒诞体验。从参加母亲的葬礼到偶然成了杀人犯，再到被判处死刑，默尔索似乎对一切都无动于衷，他像一个象征性的符号，代表了一种普遍的存在，又像是一个血红色的灯塔，具有高度的警示性。然而，局外人现象的产生无疑是由这个世界本身所孕育的，默尔索的存在有其深刻的外部原因。'
-                }
-              />
+              <ListItemText primary="简介" secondary={bookNote} />
+            </ListItem>
+            <ListItem button>
+              <ListItemText primary="发布时间" secondary={bookRelease} />
+            </ListItem>
+            <ListItem button>
+              <ListItemText primary="剩余库存" secondary={bookRemain} />
             </ListItem>
             <ListItem button>
               <ListItemText primary="价格" secondary={'¥RMB: ' + bookPrice} />

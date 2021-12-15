@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { DataGrid } from '@mui/x-data-grid'
 import Box from '@mui/material/Box'
+import * as Api from '../../utils/api'
 const columns = [
   { field: 'id', headerName: 'id', align: 'center', width: 20 },
   { field: 'orderUser', headerName: '下单用户', align: 'left', width: 150 },
@@ -15,29 +16,42 @@ const columns = [
   {
     field: 'bookList',
     headerName: '书单',
-    width: 150,
+    width: 350,
   },
   { field: 'orderState', headerName: '状态', align: 'left', width: 90 },
 ]
 let idCounter = 0
-const createRandomRow = () => {
-  idCounter += 1
-  return {
-    id: idCounter,
-    orderUser: 'badbao',
-    orderTime: '2021 12.14 16:33',
-    orderPrice: 77,
-    bookList: '《局外人》',
-    orderState: '未处理',
-  }
-}
 const AdminOrder = () => {
-  const [rows, setRows] = React.useState(() => [
-    createRandomRow(),
-    createRandomRow(),
-    createRandomRow(),
-    createRandomRow(),
-  ])
+  const [rows, setRows] = React.useState([])
+  React.useEffect(() => {
+    const fetchallbook = async () => {
+      let res = await Api.getAllOrder()
+      console.log(res)
+      let orders = res.data
+      let _rows = []
+      for (let i = 0; i < orders.length; i++) {
+        let booklist = ''
+        for (let item of orders[i].bookList) {
+          booklist += '《' + item.bookName + '》'
+        }
+        _rows.push({
+          id: idCounter++,
+          orderUser: orders[i].orderUser,
+          orderTime: orders[i].orderTime,
+          orderPrice: orders[i].orderPrice,
+          bookList: booklist,
+          orderState:
+            orders[i].orderState === 0
+              ? '未处理'
+              : orders[i].orderState === 1
+              ? '已处理'
+              : '已拒绝',
+        })
+      }
+      setRows(_rows)
+    }
+    fetchallbook()
+  }, [])
   return (
     <div style={{ height: 400, width: '100%' }}>
       <div style={{ display: 'flex', height: '100%' }}>

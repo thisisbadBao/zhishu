@@ -7,7 +7,6 @@ async function request(url, options = {}, others = {}) {
     // const { header = {}, ...other } = options
 
     const _url = `${regHttp.test(url) ? '' : server.host}${url}`
-
     let res = await fetch(_url, options)
 
     res = await handleResponse(res)
@@ -80,7 +79,11 @@ async function get(url, options) {
 async function post(url, options) {
   return await request(url, {
     method: 'POST',
-    ...options,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: options,
+    // ...options,
   })
 }
 

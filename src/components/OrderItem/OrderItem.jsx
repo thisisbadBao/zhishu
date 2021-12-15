@@ -1,28 +1,34 @@
-import React, { useState } from "react";
-import "./OrderItem.css";
-import IconButton from "@mui/material/IconButton";
-import { Remove, Add } from "@mui/icons-material";
+import React, { useState } from 'react'
+import './OrderItem.css'
+import IconButton from '@mui/material/IconButton'
+import { Remove, Add } from '@mui/icons-material'
 
-const OrderItem = ({ bookImg, bookName, bookPrice, bookNum }) => {
-  let [orderBookNum, changeNum] = useState(bookNum);
+const OrderItem = ({ bookImg, bookName, bookPrice, bookNum, changePrice }) => {
+  let [orderBookNum, changeNum] = useState(bookNum)
 
   return (
     <div className="orderItem">
-      <img className="bookOrderImg" src={bookImg} alt="" />
+      <img
+        className="bookOrderImg"
+        src={bookImg}
+        alt=""
+        style={{ height: '20vh' }}
+      />
       <div className="bookDetail">
-        <h2 className="bookName">《{bookName}》</h2>
-        <h4>单价: ￥{bookPrice}</h4>
+        <div className="bookName">《{bookName}》</div>
+        <div>单价: ￥{bookPrice}</div>
         <div className="bookNumWiget">
           <IconButton aria-label="remove" color="primary">
             <Remove
               onClick={() => {
                 if (orderBookNum > 0) {
-                  orderBookNum = orderBookNum - 1;
+                  orderBookNum = orderBookNum - 1
                 } else {
-                  alert("你触犯了我的底线啦");
-                  orderBookNum = 0;
+                  alert('你触犯了我的底线啦')
+                  orderBookNum = 0
                 }
-                changeNum(orderBookNum);
+                changeNum(orderBookNum)
+                changePrice(-bookPrice)
               }}
             />
           </IconButton>
@@ -30,7 +36,8 @@ const OrderItem = ({ bookImg, bookName, bookPrice, bookNum }) => {
           <IconButton aria-label="add" color="primary">
             <Add
               onClick={() => {
-                changeNum((orderBookNum = orderBookNum + 1));
+                changeNum((orderBookNum = orderBookNum + 1))
+                changePrice(bookPrice)
               }}
             />
           </IconButton>
@@ -38,7 +45,7 @@ const OrderItem = ({ bookImg, bookName, bookPrice, bookNum }) => {
         <div className="totalCost">总价： ￥{orderBookNum * bookPrice}</div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default OrderItem;
+export default OrderItem

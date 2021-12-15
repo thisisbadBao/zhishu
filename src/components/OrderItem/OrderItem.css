@@ -16,18 +16,18 @@
 .bookDetail {
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding-inline: 7em;
+  justify-content: space-around;
+  /* flex-direction: column; */
+  padding-inline: 11em;
   box-shadow: 0 0 0 0;
-  color: #177d8f
+  color: #177d8f;
 }
 
 .bookNumWiget {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  padding-bottom: 1em;
+  /* padding-bottom: 1em; */
 }
 
 .bookNum {

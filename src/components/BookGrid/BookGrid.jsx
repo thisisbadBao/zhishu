@@ -1,105 +1,63 @@
-import React from 'react'
 import './BookGrid.css'
 import BookItem from '../BookItem/BookItem'
-
-const BookGrid = () => {
-  const bookArr = [
-    {
-      bookImg:
-        'https://th.bing.com/th/id/OIP.A6Hk-aQbwvDcdU9w2TE7CwHaJ2?w=199&h=265&c=7&r=0&o=5&pid=1.7',
-      bookName: '局外人',
-      author: '加缪',
-    },
-    {
-      bookImg:
-        'https://th.bing.com/th/id/OIP.A6Hk-aQbwvDcdU9w2TE7CwHaJ2?w=199&h=265&c=7&r=0&o=5&pid=1.7',
-      bookName: '局外人',
-      author: '加缪',
-    },
-    {
-      bookImg:
-        'https://th.bing.com/th/id/OIP.A6Hk-aQbwvDcdU9w2TE7CwHaJ2?w=199&h=265&c=7&r=0&o=5&pid=1.7',
-      bookName: '局外人',
-      author: '加缪',
-    },
-    {
-      bookImg:
-        'https://th.bing.com/th/id/OIP.A6Hk-aQbwvDcdU9w2TE7CwHaJ2?w=199&h=265&c=7&r=0&o=5&pid=1.7',
-      bookName: '局外人',
-      author: '加缪',
-    },
-    {
-      bookImg:
-        'https://th.bing.com/th/id/OIP.A6Hk-aQbwvDcdU9w2TE7CwHaJ2?w=199&h=265&c=7&r=0&o=5&pid=1.7',
-      bookName: '局外人',
-      author: '加缪',
-    },
-    {
-      bookImg:
-        'https://th.bing.com/th/id/OIP.A6Hk-aQbwvDcdU9w2TE7CwHaJ2?w=199&h=265&c=7&r=0&o=5&pid=1.7',
-      bookName: '局外人',
-      author: '加缪',
-    },
-    {
-      bookImg:
-        'https://th.bing.com/th/id/OIP.A6Hk-aQbwvDcdU9w2TE7CwHaJ2?w=199&h=265&c=7&r=0&o=5&pid=1.7',
-      bookName: '局外人',
-      author: '加缪',
-    },
-    {
-      bookImg:
-        'https://th.bing.com/th/id/OIP.A6Hk-aQbwvDcdU9w2TE7CwHaJ2?w=199&h=265&c=7&r=0&o=5&pid=1.7',
-      bookName: '局外人',
-      author: '加缪',
-    },
-    {
-      bookImg:
-        'https://th.bing.com/th/id/OIP.A6Hk-aQbwvDcdU9w2TE7CwHaJ2?w=199&h=265&c=7&r=0&o=5&pid=1.7',
-      bookName: '局外人',
-      author: '加缪',
-    },
-    {
-      bookImg:
-        'https://th.bing.com/th/id/OIP.A6Hk-aQbwvDcdU9w2TE7CwHaJ2?w=199&h=265&c=7&r=0&o=5&pid=1.7',
-      bookName: '局外人',
-      author: '加缪',
-    },
-    {
-      bookImg:
-        'https://th.bing.com/th/id/OIP.A6Hk-aQbwvDcdU9w2TE7CwHaJ2?w=199&h=265&c=7&r=0&o=5&pid=1.7',
-      bookName: '局外人',
-      author: '加缪',
-    },
-    {
-      bookImg:
-        'https://th.bing.com/th/id/OIP.A6Hk-aQbwvDcdU9w2TE7CwHaJ2?w=199&h=265&c=7&r=0&o=5&pid=1.7',
-      bookName: '局外人',
-      author: '加缪',
-    },
-    {
-      bookImg:
-        'https://th.bing.com/th/id/OIP.A6Hk-aQbwvDcdU9w2TE7CwHaJ2?w=199&h=265&c=7&r=0&o=5&pid=1.7',
-      bookName: '局外人',
-      author: '加缪',
-    },
-    {
-      bookImg:
-        'https://th.bing.com/th/id/OIP.A6Hk-aQbwvDcdU9w2TE7CwHaJ2?w=199&h=265&c=7&r=0&o=5&pid=1.7',
-      bookName: '局外人',
-      author: '加缪',
-    },
-  ]
+import { useState, useEffect } from 'react'
+import * as Api from '../../utils/api'
+const BookGrid = ({ res, addToCart }) => {
+  const [bookArray, setBookArray] = useState([])
+  useEffect(() => {
+    const fetchData = async () => {
+      let response = await Api.getAllBook()
+      setBookArray(response.data)
+    }
+    fetchData()
+  }, [])
   return (
     <div className="bookGrid">
-      {bookArr.map((item, index) => (
-        <BookItem
-          bookImg={item.bookImg}
-          bookName={item.bookName}
-          bookAuthor={item.author}
-          bookPrice={77}
-          key={index}
-        />
-      ))}
+      {res.length === 0 ? (
+        bookArray.map((item, index) => (
+          <BookItem
+            bookImg={item.bookpic}
+            bookName={item.bookname}
+            bookAuthor={item.bookauthor}
+            bookPrice={item.bookprice}
+            bookNote={item.booknote}
+            bookRelease={item.bookrelease.split('T')[0]}
+            bookRemain={item.bookremain}
+            addToCart={addToCart}
+            key={index}
+          />
+        ))
+      ) : res[0] === 'yes' ? (
+        bookArray.map((item, index) => (
+          <BookItem
+            bookImg={item.bookpic}
+            bookName={item.bookname}
+            bookAuthor={item.bookauthor}
+            bookPrice={item.bookprice}
+            bookNote={item.booknote}
+            bookRelease={item.bookrelease.split('T')[0]}
+            bookRemain={item.bookremain}
+            addToCart={addToCart}
+            key={index}
+          />
+        ))
+      ) : res[0] === 'no' ? (
+        <div style={{ fontSize: '3vh' }}>Oops,没有找到你想要的书</div>
+      ) : (
+        res.map((item, index) => (
+          <BookItem
+            bookImg={item.bookpic}
+            bookName={item.bookname}
+            bookAuthor={item.bookauthor}
+            bookPrice={item.bookprice}
+            bookNote={item.booknote}
+            bookRelease={item.bookrelease.split('T')[0]}
+            bookRemain={item.bookremain}
+            addToCart={addToCart}
+            key={index}
+          />
+        ))
+      )}
     </div>
   )
 }

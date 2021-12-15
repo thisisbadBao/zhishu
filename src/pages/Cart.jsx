@@ -1,90 +1,65 @@
-import React from "react";
-import OrderItem from "../components/OrderItem/OrderItem";
-import "../styles/Cart.css";
-import Title from "../components/Title/Title";
-import { Button } from "@mui/material";
-import Popover from "@mui/material/Popover";
-import Typography from "@mui/material/Typography";
+import React from 'react'
+import OrderItem from '../components/OrderItem/OrderItem'
+import '../styles/Cart.css'
+import Title from '../components/Title/Title'
+import { Button } from '@mui/material'
+import Popover from '@mui/material/Popover'
+import Typography from '@mui/material/Typography'
+import { message } from 'antd'
+import * as Api from '../utils/api'
 
-const Cart = () => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  let [sum, setSum] = React.useState(0);
-  const submitCart = (event) => {
-    setAnchorEl(event.currentTarget);
-    orders.map((item) => (sum += item.bookPrice * item.bookNum));
-    setSum(sum);
-    console.log(sum);
-  };
+const Cart = ({ cartItem, setCartEmpty }) => {
+  const [anchorEl, setAnchorEl] = React.useState(null)
+  let [sum, setSum] = React.useState(0)
+  const submitCart = event => {
+    setAnchorEl(event.currentTarget)
+    // var _sum = 0
+    // cartItem.map(item => {
+    //   _sum += item.bookPrice * item.bookNum
+    // })
+
+    // setSum(_sum)
+  }
+  React.useEffect(() => {
+    var _sum = 0
+    cartItem.map(item => {
+      _sum += item.bookPrice * item.bookNum
+    })
+
+    setSum(_sum)
+  }, [cartItem])
   const handleClose = () => {
-    setAnchorEl(null);
-  };
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
+    setAnchorEl(null)
+  }
+  const open = Boolean(anchorEl)
+  const id = open ? 'simple-popover' : undefined
   const orders = [
     {
-      bookName: "The Great Gatisby",
+      bookName: 'The Great Gatisby',
       bookPrice: 20,
       bookNum: 4,
     },
-    {
-      bookName: "The Great Gatisby",
-      bookPrice: 20,
-      bookNum: 4,
-    },
-    {
-      bookName: "The Great Gatisby",
-      bookPrice: 20,
-      bookNum: 4,
-    },
-    {
-      bookName: "The Great Gatisby",
-      bookPrice: 20,
-      bookNum: 4,
-    },
-    {
-      bookName: "The holder of field",
-      bookPrice: 40,
-      bookNum: 2,
-    },
-    {
-      bookName: "The holder of field",
-      bookPrice: 40,
-      bookNum: 2,
-    },
-    {
-      bookName: "The holder of field",
-      bookPrice: 40,
-      bookNum: 2,
-    },
-    {
-      bookName: "The holder of field",
-      bookPrice: 40,
-      bookNum: 2,
-    },
-    {
-      bookName: "The holder of field",
-      bookPrice: 40,
-      bookNum: 2,
-    },
-    {
-      bookName: "The holder of field",
-      bookPrice: 40,
-      bookNum: 2,
-    },
-  ];
-
+  ]
+  const changePrice = price => {
+    var _sum = sum
+    _sum += price
+    console.log(_sum)
+    setSum(_sum)
+  }
   return (
     <div className="orderList">
       <Title text="Cart" />
-      {orders.map((item) => (
+      {cartItem.map((item, index) => (
         <OrderItem
           bookName={item.bookName}
-          bookImg="https://th.bing.com/th/id/OIP.A6Hk-aQbwvDcdU9w2TE7CwHaJ2?w=199&h=265&c=7&r=0&o=5&pid=1.7"
+          bookImg={item.bookImg}
           bookPrice={item.bookPrice}
           bookNum={item.bookNum}
+          changePrice={changePrice}
+          key={index}
         />
       ))}
-
+      <div>总价为{sum}元</div>
       <div className="submitCart">
         <Popover
           id={id}
@@ -92,12 +67,11 @@ const Cart = () => {
           anchorEl={anchorEl}
           onClose={handleClose}
           anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "left",
+            vertical: 'bottom',
+            horizontal: 'left',
           }}
         >
           <Typography sx={{ p: 2 }}>
-            <h3 className="sumTitle">总价为{sum}元</h3>
             <div className="btnGroup">
               <div className="btn">
                 <Button
@@ -105,8 +79,8 @@ const Cart = () => {
                   variant="contained"
                   color="error"
                   onClick={() => {
-                    handleClose();
-                    alert("支付失败!");
+                    handleClose()
+                    message.success('取消支付！')
                   }}
                 >
                   取消
@@ -116,10 +90,31 @@ const Cart = () => {
                 <Button
                   variant="contained"
                   color="success"
-                  onClick={() => {
-                    handleClose();
-                    alert("支付成功" + sum + "元！");
-                    setSum(0);
+                  onClick={async () => {
+                    handleClose()
+                    let data = {
+                      orderUser: 'badbao',
+                      orderTime: new Date(),
+                      orderPrice: sum,
+                      bookList: cartItem.map(item => {
+                        return {
+                          bookName: item.bookName,
+                          bookAuthor: item.bookAuthor,
+                          bookNum: parseInt(item.bookNum),
+                          bookPrice: parseFloat(item.bookPrice),
+                        }
+                      }),
+                    }
+                    console.log(data)
+                    let res = await Api.addOrder(JSON.stringify(data))
+                    if (res.code === 200) {
+                      message.success('支付成功' + sum + '元！')
+                    } else {
+                      message.error('出现未知错误！')
+                    }
+
+                    setSum(0)
+                    setCartEmpty()
                   }}
                 >
                   确认
@@ -138,7 +133,7 @@ const Cart = () => {
         </Button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Cart;
+export default Cart

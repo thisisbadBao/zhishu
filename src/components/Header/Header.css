@@ -22,7 +22,8 @@
 .loginButton:hover {
   cursor: pointer;
   box-shadow: 0 0 1vh 1vh #ffffff66;
-  background-color: #ffffff66;
+  background-color: #ffffff;
+  color: #002329;
 }
 
 .faq {
@@ -38,7 +39,8 @@
 .faq:hover {
   cursor: pointer;
   box-shadow: 0 0 1vh 1vh #ffffff66;
-  background-color: #ffffff66;
+  background-color: #ffffff;
+  color: #002329;
 }
 
 .cart {
@@ -54,7 +56,8 @@
 .cart:hover {
   cursor: pointer;
   box-shadow: 0 0 1vh 1vh #ffffff66;
-  background-color: #ffffff66;
+  background-color: #ffffff;
+  color: #002329;
 }
 
 .admin {
@@ -70,7 +73,8 @@
 .admin:hover {
   cursor: pointer;
   box-shadow: 0 0 1vh 1vh #ffffff66;
-  background-color: #ffffff66;
+  background-color: #ffffff;
+  color: #002329;
 }
 .logo {
   display: flex;

@@ -1,9 +1,25 @@
-import React from 'react'
+import { React, useState, useEffect } from 'react'
 import './Welcome.css'
 import bookImgUrl from '../../assets/image/book.svg'
 import searchBg from '../../assets/image/searchBg.svg'
 import searchIcon from '../../assets/image/searchIcon.svg'
-const Welcome = () => {
+import * as Api from '../../utils/api'
+const Welcome = ({ getSearch }) => {
+  const [searchRes, setSearchRes] = useState([])
+  const [keyword, setKeyword] = useState('')
+  const searchBookByName = async bookname => {
+    if (keyword === '') {
+      getSearch(['yes'])
+      return
+    }
+    let res = await Api.searchBook(keyword)
+    if (res.errCode === 5) {
+      getSearch(['no'])
+    }
+    if (res.code === 200) {
+      getSearch(res.data)
+    }
+  }
   const style = {
     bgd: {
       backgroundImage: `url(${searchBg})`,
@@ -35,7 +51,19 @@ const Welcome = () => {
       </div>
       <div className="searchBar">
         <img src={searchIcon} alt="" style={{ width: '3.5vh' }} />
-        <input className="searchInput" placeholder="输入你想查找的书"></input>
+        <input
+          className="searchInput"
+          placeholder="输入你想查找的书"
+          value={keyword}
+          onChange={e => {
+            setKeyword(e.target.value)
+          }}
+          onKeyDown={e => {
+            if (e.code === 'Enter') {
+              searchBookByName(keyword)
+            }
+          }}
+        ></input>
       </div>
     </div>
   )

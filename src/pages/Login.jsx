@@ -25,6 +25,8 @@ const Login = ({ getLogin }) => {
   let navigate = useNavigate()
   const [isNewUser, changeMod] = useState(false)
   const [userName, setUserName] = useState('')
+  const [tel, setTel] = useState('')
+  const [addr, setAddr] = useState('')
   const [values, setValues] = React.useState({
     amount: '',
     password: '',
@@ -48,22 +50,48 @@ const Login = ({ getLogin }) => {
       return
     }
     handleLoginToggle()
-    let res = await Api.login({
-      userName: userName,
-      userPassword: values.password,
-    })
+    console.log(userName, values.password)
+    let data = {
+      userName: userName.toString(),
+      userPassword: values.password.toString(),
+    }
+    let res = await Api.login(JSON.stringify(data))
     console.log(res)
     if (res.code === 200) {
-      message.success('登录成功，欢迎 ' + res.data.userName)
+      message.success('登录成功，欢迎 ' + res.data.username)
       getLogin({
-        userName: res.data.userName,
-        userAuth: res.data.userAuth ? 'admin' : 'user',
+        userName: res.data.username,
+        userAuth: res.data.userjuris ? 'admin' : 'user',
       })
-      localStorage.setItem('userName', res.data.userName)
-      localStorage.setItem('userAuth', res.data.userAuth)
+      localStorage.setItem('userName', res.data.username)
+      localStorage.setItem('userAuth', res.data.userjuris ? 'admin' : 'user')
       navigate('/')
     } else {
       message.error(res.errMsg)
+    }
+  }
+  //register
+  const userRegister = async () => {
+    if (userName === '') {
+      message.warning('用户名不能为空！')
+    } else if (values.password === '') {
+      message.warning('密码不能为空！')
+    } else if (addr === '') {
+      message.warning('地址不能为空！')
+    } else if (tel === '') {
+      message.warning('手机号不能为空！')
+    }
+    handleLoginToggle()
+    let data = {
+      userName: userName,
+      userPassword: values.password,
+      userAddr: addr,
+      userTel: tel,
+    }
+    let res = await Api.register(JSON.stringify(data))
+    if (res.code === 200) {
+      message.success('注册成功')
+      await userlogin()
     }
   }
 
@@ -81,21 +109,6 @@ const Login = ({ getLogin }) => {
   const handleMouseDownPassword = event => {
     event.preventDefault()
   }
-
-  const registerTable = (
-    <div>
-      <TextField
-        label="Phone"
-        id="outlined-start-adornment"
-        sx={{ m: 1, width: '25ch' }}
-      />
-      <TextField
-        label="Address"
-        id="outlined-start-adornment"
-        sx={{ m: 1, width: '25ch' }}
-      />
-    </div>
-  )
 
   return (
     <div
@@ -145,12 +158,50 @@ const Login = ({ getLogin }) => {
         </div>
       </Box>
 
-      <div className="registerTable">{isNewUser && registerTable}</div>
+      <div className="registerTable">
+        {isNewUser && (
+          <div>
+            <TextField
+              label="Phone"
+              id="outlined-start-adornment"
+              sx={{ m: 1, width: '25ch' }}
+              value={tel}
+              onChange={e => {
+                setTel(e.target.value)
+              }}
+            />
+            <TextField
+              label="Address"
+              id="outlined-start-adornment"
+              sx={{ m: 1, width: '25ch' }}
+              value={addr}
+              onChange={e => {
+                setAddr(e.target.value)
+              }}
+            />
+          </div>
+        )}
+      </div>
 
       <div className="switchMod">
-        <Button variant="contained" endIcon={<SendIcon />} onClick={userlogin}>
-          {isNewUser ? 'register' : 'sign in'}
-        </Button>
+        {isNewUser ? (
+          <Button
+            variant="contained"
+            endIcon={<SendIcon />}
+            onClick={userRegister}
+          >
+            register
+          </Button>
+        ) : (
+          <Button
+            variant="contained"
+            endIcon={<SendIcon />}
+            onClick={userlogin}
+          >
+            sign in
+          </Button>
+        )}
+
         <div className="modSwitch">
           <Switch
             onChange={() => {

@@ -23,6 +23,7 @@ const Header = ({ user, logout }) => {
   function handleClickLogout() {
     logout({ userName: '', userAuth: '' })
     message.info(user.userName + '已登出')
+    navigate('/')
     localStorage.removeItem('userName')
     localStorage.removeItem('userAuth')
   }
@@ -58,7 +59,7 @@ const Header = ({ user, logout }) => {
         <div className="faq" onClick={handleClickFAQ}>
           关于
         </div>
-        {user.userAuth && (
+        {user.userAuth === 'admin' && (
           <div className="admin" onClick={handleClickAdmin}>
             后台管理
           </div>
